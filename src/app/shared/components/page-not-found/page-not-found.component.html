@@ -1,0 +1,29 @@
+<div class="flex justify-content-center align-content-center text-align-center">
+  <p-card
+    header="Page Not Found"
+    subheader="404"
+    [style]="{ width: '500px' }"
+    styleClass="mt-7"
+  >
+    <ng-template pTemplate="header">
+      <img
+        alt="Card"
+        src="../../../../assets/558d2b7b2cf9882d9860bff764f2a8b9.jpg"
+        [style]="{ width: '360px', height: '230px' }"
+      />
+    </ng-template>
+    <p>
+      A página que você está tentando acessar não foi encontrada. Ela pode ter
+      sido removida, renomeada ou não existe.
+    </p>
+    <ng-template pTemplate="footer">
+      <p-button
+        label="Voltar para Home"
+        icon="pi pi-home"
+        [style]="{ 'margin-left': '8em' }"
+        [routerLink]="['/home']"
+        routerLinkActive="router-link-active"
+      ></p-button>
+    </ng-template>
+  </p-card>
+</div>

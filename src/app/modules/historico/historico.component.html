@@ -1,0 +1,64 @@
+<!-- historico.component.html -->
+
+<div class="grid">
+  <div class="col-12">
+    <p-card
+      styleClass="shadow-3 m-5 text-red-900"
+      header="Histórico de Edições"
+    >
+      <p-table
+        [columns]="cols"
+        [value]="historicoEdicoes"
+        [rows]="10"
+        [paginator]="true"
+        [responsive]="true"
+        [globalFilterFields]="['nome', 'quantidade']"
+        [tableStyle]="{ 'min-width': '75rem' }"
+        [rowHover]="true"
+        [showCurrentPageReport]="true"
+        dataKey="id"
+        currentPageReportTemplate="Mostrando {first} de {last} de {totalRecords} edições"
+      >
+        <ng-template pTemplate="header" let-columns>
+          <tr>
+            <th *ngFor="let col of columns">
+              <div class="flex justify-content-between align-items-center">
+                {{ col.header }}
+              </div>
+            </th>
+          </tr>
+        </ng-template>
+
+        <ng-template pTemplate="body" let-edicao let-i="rowIndex">
+          <tr>
+            <td *ngFor="let col of cols">
+              <div class="flex justify-content-between align-items-center">
+                {{
+                  col.field === "dataHoraEdicao"
+                    ? (edicao[col.field] | date : "dd/MM/yyyy HH:mm:ss")
+                    : edicao[col.field]
+                }}
+              </div>
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </p-card>
+    <div
+      class="flex justify-content-center gap-3 align-content-center align-items-center"
+    >
+      <p-button
+        label="Voltar para Restaurantes"
+        icon="pi pi-arrow-left"
+        styleClass="bg-red-700 p-button-secondary"
+        routerLink="/restaurantes"
+      ></p-button>
+      <p-button
+        label="Excluir Histórico"
+        icon="pi pi-trash"
+        styleClass="bg-red-700 p-button-secondary"
+        (click)="limparHistorico()"
+      ></p-button>
+    </div>
+  </div>
+</div>

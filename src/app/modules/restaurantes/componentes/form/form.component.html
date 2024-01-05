@@ -1,0 +1,33 @@
+<form
+  [formGroup]="addRestauranteForm"
+  (ngSubmit)="handleSubmitAddRestaurante()"
+>
+  <div class="card flex flex-column md:flex-column gap-3">
+    <!-- Nome do restaurante -->
+    <input pInputText placeholder="Nome" formControlName="nome" />
+    <!-- Categoria do restaurante -->
+    <p-dropdown
+      styleClass="w-full"
+      [options]="categorias"
+      [(ngModel)]="selectedCategory"
+      optionLabel="label"
+      optionValue="value"
+      placeholder="Selecione uma categoria"
+      formControlName="categoria"
+    ></p-dropdown>
+    <!-- Quantidade do restaurante -->
+    <input pInputText placeholder="Quantidade" formControlName="quantidade" />
+    <!-- Endereço do restaurante -->
+    <input pInputText placeholder="Endereço" formControlName="endereco" />
+
+    <div
+      class="flex flex-row justify-content-center align-content-center align-items-center m-1"
+    >
+      <p-button
+        [disabled]="!addRestauranteForm.valid"
+        type="submit"
+        label="Concluir"
+      ></p-button>
+    </div>
+  </div>
+</form>
